@@ -1,0 +1,47 @@
+## GPU 환경 세팅
+1. install latest graphic driver
+https://www.nvidia.com/en-us/drivers/results/
+2. install CUDA-toolkit
+3. instal cuDNN
+
+
+버전 
+CUDA:NVIDIA-SMI 576.80                 Driver Version: 576.80         CUDA Version: 12.9
+torch: 1.13.1+cu117
+cuDNN은 torch가 알아서 설치해줌
+
+Jetson에서 pytorch 요구 버전이 다름 >> 모델만 저장해서 사용하기
+
+
+## 데이터 라벨링 툴
+https://labelstud.io/guide/quick_start
+
+실행 방법
+label-studio
+
+해야할것
+1. 라벨링 포맷 결정 후 custom
+2. 라벨링
+
+계정
+ID: yangse0101@gmail.com
+passwd: asdf0101
+
+
+## model 선정
+yolo pose 모델 > Jetson 사양에 맞춰 모델 선정해야 할듯 > 성능이 중요하지는 않을듯
+https://github.com/ultralytics/ultralytics/issues/1915
+
+해야할 것
+1. 구현 방식 결정
+2. 모델 선정
+- 모델 선정시 jetson에서 원활히 돌아갈 수 있는지/ 우리가 원하는 성능을 내는지/ 실시간으로 추론이 가능한지 등등 고려
+- 데이터셋을 많이 만들지 못하기 때문에 1. fine-tuning을 하던지 2. backbone freeze해서 head만 학습시키던지
+- Head를 수정해서 orientation 자체를 추론할건지도 고민해보기
+
+3. 데이터 증강/ 모델 학습
+4. 앙상블 등 다른 기법 생각해보기
+
+
+###
+전부 완료되면 jetson에서 추론 돌려보고 원하는 속도가 나오는지 확인
